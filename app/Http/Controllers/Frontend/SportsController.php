@@ -14,7 +14,8 @@ class SportsController extends Controller
      */
     public function index()
     {
-        //
+        $services = DB::table('services')->get();
+        return view('frontend.pages.sports.index', compact('services'));
     }
 
     /**

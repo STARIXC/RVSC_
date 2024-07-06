@@ -19,6 +19,7 @@ use App\Http\Controllers\Frontend\BookingController;
 use App\Http\Controllers\Frontend\FoodController;
 use App\Http\Controllers\Frontend\MembershipController;
 use App\Http\Controllers\Frontend\DownloadController;
+use App\Http\Controllers\Frontend\SportsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,7 +34,7 @@ use App\Http\Controllers\Frontend\DownloadController;
 
 Route::get('/home', function () {
     return view('frontend.index');
-});
+})->name('home');
 // authentication routes 
 Route::group(['prefix' => 'admin', 'middleware' => ['admin:admin']], function () {
     Route::get('/login', [AdminController::class, 'LoginForm']);
@@ -61,7 +62,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:sanctum,admin', 'verif
     // downloads
     Route::get('/downloads', [DownloadController::class, 'adminView'])->name('downloads');
     Route::post('/downloads/add', [DownloadController::class, 'store'])->name('store.downloads');
-   
+
     // category routes
     Route::get('/room', [AdminRoomsController::class, 'index'])->name('room');
     Route::get('/room/add/{id}', [AdminRoomsController::class, 'create']);
@@ -102,18 +103,19 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:sanctum,admin', 'verif
     Route::get('/softdelete/events/{id}', [EventsController::class, 'softDelete']);
     Route::get('/events/restore/{id}', [EventsController::class, 'restore']);
     Route::get('/events/delete/{id}', [EventsController::class, 'destroy']);
-     // News routes
-     Route::get('/news', [NewsController::class, 'adminNews'])->name('news.all');
-     Route::post('/news/add', [NewsController::class, 'store'])->name('store.news');
-     Route::get('/news/edit/{id}', [NewsController::class, 'edit'])->name('edit.news');
-     Route::post('/news/update/{id}', [NewsController::class, 'update']);
-     Route::get('/softdelete/news/{id}', [NewsController::class, 'softDelete']);
-     Route::get('/news/restore/{id}', [NewsController::class, 'restore']);
-     Route::get('/news/delete/{id}', [NewsController::class, 'destroy']);
+    // News routes
+    Route::get('/news', [NewsController::class, 'adminNews'])->name('news.all');
+    Route::post('/news/add', [NewsController::class, 'store'])->name('store.news');
+    Route::get('/news/edit/{id}', [NewsController::class, 'edit'])->name('edit.news');
+    Route::post('/news/update/{id}', [NewsController::class, 'update']);
+    Route::get('/softdelete/news/{id}', [NewsController::class, 'softDelete']);
+    Route::get('/news/restore/{id}', [NewsController::class, 'restore']);
+    Route::get('/news/delete/{id}', [NewsController::class, 'destroy']);
 
     // Management routes
 
-    Route::get('/management', [ManagementController::class, 'allDirectors'])->name('management.all');
+    // Route::get('/management', [ManagementController::class, 'allDirectors'])->name('management.all');
+    // Route::get('/team', [ManagementController::class, 'allDirectors'])->name('management.all');
     Route::post('/management/add', [ManagementController::class, 'store'])->name('store.director');
     Route::get('/management/edit/{id}', [ManagementController::class, 'edit'])->name('edit.director');
     Route::post('/management/update/{id}', [ManagementController::class, 'update']);
@@ -121,15 +123,14 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:sanctum,admin', 'verif
     Route::get('/management/restore/{id}', [ManagementController::class, 'restore']);
     Route::get('/management/delete/{id}', [ManagementController::class, 'destroy']);
 
-     // Membership routes
-     Route::get('/membership', [MembershipController::class, 'index'])->name('membership.all');
-     Route::post('/membership/add', [MembershipController::class, 'store'])->name('store.membership');
-     Route::get('/membership/edit/{id}', [MembershipController::class, 'edit'])->name('edit.membership');
-     Route::post('/membership/update/{id}', [MembershipController::class, 'update']);
-     Route::get('/softdelete/membership/{id}', [MembershipController::class, 'softDelete']);
-     Route::get('/membership/restore/{id}', [MembershipController::class, 'restore']);
-     Route::get('/membership/delete/{id}', [MembershipController::class, 'delete']);
- 
+    // Membership routes
+    Route::get('/membership', [MembershipController::class, 'index'])->name('membership.all');
+    Route::post('/membership/add', [MembershipController::class, 'store'])->name('store.membership');
+    Route::get('/membership/edit/{id}', [MembershipController::class, 'edit'])->name('edit.membership');
+    Route::post('/membership/update/{id}', [MembershipController::class, 'update']);
+    Route::get('/softdelete/membership/{id}', [MembershipController::class, 'softDelete']);
+    Route::get('/membership/restore/{id}', [MembershipController::class, 'restore']);
+    Route::get('/membership/delete/{id}', [MembershipController::class, 'delete']);
 });
 
 // front end routes
@@ -143,12 +144,10 @@ Route::get('/news/{id}', [NewsController::class, 'show']);
 Route::get('/careers', function () {
     return view('frontend.pages.careers.index');
 });
-Route::get('/sports', function () {
-    return view('frontend.pages.sports.index');
-});
-// Route::get('/membership', function () {
-    
-// });
+Route::get('/sports', [SportsController::class, 'index']);
+//  team
+Route::get('/team/board', [ManagementController::class, 'board'])->name('team.board');
+Route::get('/team/trustee', [ManagementController::class, 'trustee'])->name('team.trustee');
 
 Route::get('/career', function () {
     return view('frontend.pages.news_events.jobs');
@@ -166,7 +165,6 @@ Route::group(['prefix' => 'booking'], function () {
     // Route::post('/booking/select_room', [BookingController::class, 'showRooms'])->name('available.rooms');
     // Route::post('/booking/selected', [BookingController::class, 'postRoom'])->name('post.room');
     Route::post('/booking/reserve', [BookingController::class, 'postBooking'])->name('post.booking');
-    
 });
 // category routes
 Route::get('/contacts', [EnquiryController::class, 'index']);

@@ -15,7 +15,7 @@ class FoodController extends Controller
     public function index()
     {
         $photos = DB::table('site_images')
-        ->where('image_type','=','foodanddrinks')->latest()->paginate('8');
+        ->where('image_type','=','foodanddrinks')->latest()->paginate('12');
         
                // return $services;
         return view('frontend.pages.food_drinks.index',['photos' => $photos]);

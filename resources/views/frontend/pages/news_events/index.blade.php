@@ -1,33 +1,32 @@
 @extends('frontend.main_master')
 @section('content')
-<link href="{{ asset('frontend/assets/css/new_trend.css') }}" rel="stylesheet" type="text/css" media="all" />
 
 <div class="content">
+ <!-- Page Title -->
+ <div data-aos="fade" class="page-title pt-13" id="pageTitle">
+    <div class="heading">
+      <div class="container">
+        <div class="row d-flex justify-content-center text-center">
+          <div class="container section-title aos-init aos-animate">
+            <!-- Description -->
+            <h2 class="text-uppercase">Events</h2>
+            <p class="mb-0">Stay up to date with our all year round events, conferences and trainings...</p>
+          </div>
 
-  <header class="eventsHero">
-    {{-- <div class="banner">
-      <h1>Events</h1>
-      <div></div>
-      <p></p>
-      <a class="btn-primary" href="/">return home</a>
-    </div> --}}
-  </header>
-  <div class="container mb-2">
-    <div class="row">
-      <div class="col-md-10 mt-5">
-        <div class="lead">
-          <ol class="breadcrumb bg-transparent">
-            <li class="breadcrumb-item"><a href="/" class="text-warning">Home</a></li>
-            <li class="breadcrumb-item active"><a href="/events" class="links">Events <i
-                  class="ti-link"></i></a></li>
-          </ol>
         </div>
-        <h1 class="text-capitalize font-weight-bold poppins-font">events</h1>
-        <p class="mb-0">Stay up to date with our all year round events, conferences and trainings...</p>
       </div>
-      
     </div>
-  </div>
+    <nav class="breadcrumbs">
+      <div class="container">
+        <ol>
+          <li><a href="/">Home</a></li>
+          <li class="current">Events</li>
+
+        </ol>
+      </div>
+    </nav>
+  </div><!-- End Page Title -->
+
   
   <section class="section-search-content">
     

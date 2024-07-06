@@ -78,7 +78,7 @@ class ManagementController extends Controller
 
     $rimage=$request->file('image');
     $make_name = hexdec(uniqid()).'.'.$rimage->getClientOriginalExtension();
-      Image::make($rimage)->resize(157,157)->save('backend/assets/images/management/'.$make_name);
+      Image::make($rimage)->save('backend/assets/images/management/'.$make_name);
       $last_image = 'backend/assets/images/management/'.$make_name;
       Director::insert([
         'director_name'=>$request->dtitle,
@@ -135,7 +135,7 @@ class ManagementController extends Controller
         if ($rimage) {
             @unlink($old_image);
             $make_name = hexdec(uniqid()).'.'.$rimage->getClientOriginalExtension();
-            Image::make($rimage)->resize(157,157)->save('backend/assets/images/management/'.$make_name);
+            Image::make($rimage)->save('backend/assets/images/management/'.$make_name);
             $last_image = 'backend/assets/images/management/'.$make_name;
             $data['director_image']=$last_image;
             DB::table('directors')->where('id',$id)->update($data);
@@ -197,5 +197,16 @@ class ManagementController extends Controller
     {
         Director::onlyTrashed()->find($id)->forceDelete();
         return  redirect()->route('management.all')->with('success','Removed Successfull');
+    }
+
+    public function board()
+    {
+        $directors = DB::table('directors')->where('category','=','BOD')->where('deleted_at', NULL)->orderBy('order_app', 'asc')->get();
+        return view('frontend.pages.management.board', ['directors' => $directors]);
+    }
+    public function trustee()
+    {
+        $directors = DB::table('directors')->where('category','=','BOT')->where('deleted_at', NULL)->orderBy('order_app', 'asc')->get();
+        return view('frontend.pages.management.trustee', ['directors' => $directors]);
     }
 }

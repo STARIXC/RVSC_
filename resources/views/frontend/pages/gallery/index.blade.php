@@ -1,98 +1,64 @@
 @extends('frontend.main_master')
 @section('content')
- <!-- magnific-popup css cdn link  -->
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css">
-<link href="{{ asset('frontend/assets/css/gallery.css')}}" rel="stylesheet" type="text/css" media="all" />
-<link href="{{ asset('frontend/assets/css/new_trend.css') }}" rel="stylesheet" type="text/css" media="all" />
 
 <div class="content">
-  <header class="galleryHero">
-    <div class="banner">
-      <h1>Our Photo Gallery</h1>
-      <div></div>
-      <p></p>
-      <a class="btn-primary" href="index.php">return home</a>
-    </div>
-  </header>
+  <!-- Page Title -->
+  <div data-aos="fade" class="page-title pt-13">
+    <div class="heading">
+      <div class="container">
+        <div class="row d-flex justify-content-center text-center">
+          <div class="container section-title aos-init aos-animate">
+            <!-- Description -->
+            <h2 class="text-uppercase">Gallery</h2>
 
-  <!-- Page Content -->
-  <section  class="pb-5 pt-5 bg-white">
-    <div class="container py-4">
-      <div class="row">
-        <div class="col-md-12 pt-3">
-          <ol class="breadcrumb bg-transparent">
-            <li class="breadcrumb-item"><a href="/" class="text-warning">Home</a></li>
-            <li class="breadcrumb-item active"><a href="/gallery" class="links">Gallery <i
-                  class="ti-link"></i></a></li>
-          </ol>
+          </div>
+          <div class="col-lg-8">
+            <p class="mb-0">Discover the rich heritage and vibrant community of Rift Valley Sports Club Nakuru. Established in 1907, we offer top-notch facilities and services for all our members.
+
+          </div>
         </div>
-        {{--  <div class="col-12 col-md-12">
-          <h1 class="text-capitalize font-weight-bold">RVSC Gallery</h1> <span class="lead d-inline-block mb-2"></span>
-          <p class="text-left mb-0"></p>
-        </div>  --}}
       </div>
     </div>
+    <nav class="breadcrumbs">
+      <div class="container">
+        <ol>
+          <li><a href="/">Home</a></li>
+          <li class="current">Gallery</li>
+        </ol>
+      </div>
+    </nav>
+  </div><!-- End Page Title -->
+  <!-- ======= Portfolio Section ======= -->
+  <section id="portfolio" class="portfolio">
+    <div class="container">
+      <div class="row" data-aos="fade-up">
+        <div class="col-lg-12 d-flex justify-content-center">
+          <ul id="portfolio-flters">
+            <li data-filter="*" class="filter-active">All</li>
+            <li data-filter=".filter-events">Events</li>
+            <li data-filter=".filter-sports">Sports</li>
+            <li data-filter=".filter-foodanddrinks">Food & Drinks</li>
+            <li data-filter=".filter-otherservices">Others</li>
+          </ul>
+        </div>
+      </div>
 
-  
-</div>
+      <div class="row portfolio-container" data-aos="fade-up">
+        @foreach ($images as $image)
+        <div class="col-lg-4 col-md-6 portfolio-item filter-{{ strtolower(str_replace(' ', '', $image->image_type)) }}">
+          <img src="{{ asset($image->image_name) }}" class="img-fluid" alt="">
+          <div class="portfolio-info">
+            <h4>{{$image->image_type}}</h4>
+            <p>{{$image->image_type}}</p>
+            <a href="{{ asset($image->image_name) }}" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link"><i class="bx bx-plus"></i></a>
+
+          </div>
+        </div>
+        @endforeach
+      </div>
+
+    </div>
+  </section><!-- End Portfolio Section -->
 
 
-</section>
-<div class="gallery">
-
-  <ul class="controls">
-      <li class="buttons active" data-filter="all">all</li>
-      <li class="buttons" data-filter="events">Events</li>
-      <li class="buttons" data-filter="sports">Sports</li>
-      <li class="buttons" data-filter="foodanddrinks">Food & Drinks</li>
-      <li class="buttons" data-filter="otherservices">Others</li>
-      
-  </ul>
-
-  <div class="image-container">
-    @foreach ($images as $image)
-      <a href="{{ asset($image->image_name)}}" class="image {{ $image->image_type}}">
-          <img src="{{ asset($image->image_name)}}" alt="">
-      </a>
-      @endforeach
-
-  </div>
-
-</div>
-<!-- jquery cdn link  -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-<!-- magnific popup js cdn link  -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
-
-<script type="text/javascript">
- $(document).ready(function(){
-
-$('.buttons').click(function(){
-
-    $(this).addClass('active').siblings().removeClass('active');
-
-    var filter = $(this).attr('data-filter')
-
-    if(filter == 'all'){
-        $('.image').show(400);
-    }else{
-        $('.image').not('.'+filter).hide(200);
-        $('.image').filter('.'+filter).show(400);
-    }
-
-});
-
-$('.gallery').magnificPopup({
-
-    delegate:'a',
-    type:'image',
-    gallery:{
-        enabled:true
-    }
-
-});
-
-});
-</script>
-@endsection
+  @endsection

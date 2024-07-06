@@ -54,13 +54,10 @@ class RoomsController extends Controller
         $images=DB::table('room_images')->where('room_id',$get_room)->get();
         $room_details=$get_room=DB::table('rooms')->where('room_type',$data->id)->first();
         $facilities_feat=DB::table('rooms')->where('room_type',$data->id)->pluck('room_facilities');
+        $featured_rooms =  DB::table('categories')->where('id','!=',$data->id)->get();
         $skips = ["[","]","\""];
         $facilities=str_replace($skips, ' ',$facilities_feat);
-            return view('frontend.pages.accomodation.room-details',compact('data','images','room_details','facilities') );
-      
-        
-        
-   
+        return view('frontend.pages.accomodation.room-details',compact('data','images','room_details','facilities','featured_rooms') );
     }
 
     /**

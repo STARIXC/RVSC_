@@ -1,13 +1,9 @@
 @extends('frontend.main_master')
 @section('css')
-<link href="{{ asset('frontend/assets/css/new_trend.css') }}" rel="stylesheet" type="text/css" media="all" />
-<link href="{{ asset('frontend/assets/css/owl.carousel.css') }}" rel="stylesheet" type="text/css" media="all" />
-<link href="{{ asset('frontend/assets/css/owl.theme.default.css') }}" rel="stylesheet" type="text/css" media="all" />
+
 @endsection
 @section('content')
 
-
-{{--  <link href="{{ asset('frontend/assets/css/new_trend.css') }}" rel="stylesheet" type="text/css" media="all" /> --}}
 
 
 <div class="content">
@@ -34,11 +30,7 @@
 
     </div>
     <div class="container ">
-        {{--  <div class="row">
-            <div class="col-md-9 mx-auto text-center mb-5">
-                <h3 class="poppins-font">Leadership</h3>
-            </div>
-        </div>  --}}
+  
         <div class="row">
             <div class="col-md-12 my-5 management-display">
                 @if (count($trustees)==0)
@@ -104,25 +96,5 @@
 </div>
 
 
-
-<script src="{{ asset('frontend/assets/js/owl.carousel.js') }}"></script>
-<script>
-    $('.owl-board').owlCarousel({
-        items:5,
-    loop:true,
-    margin:10,
-    autoplay:true,
-    autoplayTimeout:2000,
-    autoplayHoverPause:true
-})
-$('.owl-trustee').owlCarousel({
-        items:5,
-    loop:true,
-    margin:10,
-    autoplay:true,
-    autoplayTimeout:2000,
-    autoplayHoverPause:true
-})
-</script>
 
 @endsection
