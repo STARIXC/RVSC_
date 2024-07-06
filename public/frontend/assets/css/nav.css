@@ -1,0 +1,37 @@
+
+.top-nav {
+    background-color: #0584BF;
+    color: #fff;
+    font-size: 1.0075rem;
+    /* border-bottom: 2px solid #FF4136 !important; */
+}
+
+@media only screen and (max-width:576px) {
+    .top-nav {
+        font-size: 75%
+    }
+}
+
+.top-nav ul.list-inline li.list-inline-item a {
+    font-weight: 500
+}
+
+.navigation__shadow,
+div.dropdown-menu {
+    box-shadow: 2px 4px 10px rgba(0, 0, 0, .2);
+    border-bottom: 4px solid rgba(12, 95, 151, 0.6) !important;
+    
+}
+
+
+.circled-icon {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+}
+
+.navigation__shadow, .navbar-nav > li > a {
+    color: #222 !important;
+    font-size: 12px !important;
+    cursor: pointer !important;
+}

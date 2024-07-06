@@ -1,0 +1,99 @@
+.featured-rooms {
+    padding: 5rem 0;
+    background-color: #F8F9FA;
+  }
+  .featured-rooms-center {
+    width: 80vw;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    grid-row-gap: 2rem;
+    grid-column-gap: 40px;
+  }
+  @media screen and (min-width: 776px) {
+    .featured-rooms-center {
+      width: 90vw;
+      grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+    }
+  }
+  @media screen and (min-width: 992px) {
+    .featured-rooms-center {
+      width: 95vw;
+      max-width: 1170px;
+    }
+  }
+  /* end pf featured rooms */
+  .hotel-room {
+    -webkit-transition: .3s all ease;
+    -o-transition: .3s all ease;
+    transition: .3s all ease;
+    background: #f7f7f7;
+}
+
+.hotel-room .heading {
+    font-size: 20px;
+    text-transform: uppercase;
+}
+
+.hotel-room .heading a {
+    color: #000;
+}
+
+.hotel-room .hotel-room-body {
+    padding: 30px;
+}
+
+.hotel-room .hotel-room-body .price {
+    color: #5c7893;
+    font-weight: 400;
+}
+
+.hotel-room>.thumbnail {
+    overflow: hidden;
+    position: relative;
+}
+
+.hotel-room>.thumbnail img {
+    -webkit-transition: .3s all ease;
+    -o-transition: .3s all ease;
+    transition: .3s all ease;
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+}
+
+.hotel-room:hover {
+    -webkit-box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.05);
+}
+
+.hotel-room:hover img {
+    -webkit-transform: scale(1.05);
+    -ms-transform: scale(1.05);
+    transform: scale(1.05);
+}
+
+.image-absolute {
+    position: absolute;
+    width: 50%;
+    right: -50px;
+    border: 7px solid #fff;
+    z-index: 9;
+    bottom: -50px;
+}
+
+.img-opacity img {
+    -webkit-transition: .2s all ease;
+    -o-transition: .2s all ease;
+    transition: .2s all ease;
+    opacity: 1;
+}
+
+.img-opacity:hover {
+    cursor: -webkit-zoom-in;
+    cursor: zoom-in;
+}
+
+.img-opacity:hover img {
+    opacity: .5;
+}

@@ -1,0 +1,69 @@
+
+.bg-vision {
+    background-color: #4596ec
+}
+
+.bg-mission {
+    background-color: #91c0f3
+}
+
+.objective-title {
+    color: #e8b10b;
+    font-size: 1.7rem;
+    font-weight: 500
+}
+
+.process-number {
+    border: 5px solid #e8b10b;
+    width: 4em;
+    height: 4em;
+    transform: translate(77%, -35%);
+    border-radius: 50%;
+    background-color: #b78c09
+}
+
+div.process-number span {
+    font-size: 2em;
+    line-height: 0
+}
+
+.process-icon {
+    width: 9em;
+    height: 9em;
+    border-radius: 50%;
+    background-color: #f8f9fa
+}
+
+.process-title {
+    letter-spacing: 3px
+}
+
+.process-description {
+    font-size: 90%
+}
+
+.membership-type {
+    font-weight: 300;
+    font-size: 1.3rem;
+    letter-spacing: .5rem;
+    text-transform: uppercase;
+    margin-bottom: .5rem
+}
+
+.membership-card {
+    overflow: hidden;
+    border-radius: .5rem
+}
+
+.membership-icon {
+    left: -30px;
+    width: 130px;
+    height: 130px
+}
+
+@media (max-width:576) {
+    .membership-icon {
+        width: 180px;
+        height: 180px
+    }
+}

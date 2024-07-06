@@ -1,0 +1,31 @@
+/* Style the form element with a border around it */
+form {
+  border: 4px solid #f1f1f1;
+}
+
+/* Add some padding and a grey background color to containers */
+.container-newletter {
+  padding: 20px;
+  background-color: #f1f1f1;
+}
+
+/* Style the input elements and the submit button */
+.new-input, .submit {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+
+/* Style the submit button */
+.submit {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+}
+.submit:hover {
+  opacity: 0.8;
+}

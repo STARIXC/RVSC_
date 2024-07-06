@@ -1,0 +1,28 @@
+<IfModule mod_rewrite.c>
+    # Enable rewrite engine
+    RewriteEngine On
+
+    # Ensure requests are redirected to the /public folder
+    RewriteCond %{REQUEST_URI} !/public
+    RewriteRule ^(.*)$ public/$1 [L]
+</IfModule>
+
+# cPanel-generated handler to set the PHP version
+<IfModule mime_module>
+    AddHandler application/x-httpd-ea-php74 .php .php7 .phtml
+</IfModule>
+
+# Handle directory index files
+DirectoryIndex index.php
+
+# Ensure the correct content type is served for PHP files
+<FilesMatch "\.php$">
+    SetHandler application/x-httpd-ea-php74
+</FilesMatch>
+
+# php -- BEGIN cPanel-generated handler, do not edit
+# Set the “alt-php74” package as the default “PHP” programming language.
+<IfModule mime_module>
+  AddHandler application/x-httpd-alt-php74 .php .php7 .phtml
+</IfModule>
+# php -- END cPanel-generated handler, do not edit
